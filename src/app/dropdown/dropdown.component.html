@@ -1,12 +1,75 @@
-<mat-form-field appearance="fill">
-  <mat-label>Select an option</mat-label>
-  <mat-select [(value)]="selected">
-    <mat-option>None</mat-option>
-    <mat-option value="car" (click)="searchImage()">Car</mat-option>
-    <mat-option value="london" (click)="searchImage()">London</mat-option>
-    <mat-option value="paris" (click)="searchImage()">Paris</mat-option>
-  </mat-select>
-</mat-form-field>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Carousel</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-grid-list cols="4" rowHeight="100px" cdkDropListGroup>
+  <mat-grid-tile colspan="1" rowspan="7">
+    <div class="containingbox">
+      <div class="floatleft"></div>
+      <div>
+        <mat-form-field appearance="fill" style="margin-left: 10px">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option>None</mat-option>
+            <mat-option value="car" (click)="searchImage()">Car</mat-option>
+            <mat-option value="london" (click)="searchImage()"
+              >London</mat-option
+            >
+            <mat-option value="paris" (click)="searchImage()">Paris</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div cdkDropListGroup>
+        <div class="example-container">
+          <h2>Files</h2>
+
+          <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="left_Data"
+            [cdkDropListConnectedTo]="[doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="example-box" *ngFor="let item of left_Data" cdkDrag>
+              {{ item.imgName }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3" rowspan="5">
+    <div *ngFor="let p of bottom_Data">
+      <div style="width: 45%; padding-left: 15px">
+        ​ <img [src]="p.imgUrl" />​
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3" rowspan="2">
+    <div>
+      <h2>Done</h2>
+
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="bottom_Data"
+        [cdkDropListConnectedTo]="[todoList]"
+        cdkDropListOrientation="horizontal"
+        class="example-list1"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box" *ngFor="let item of bottom_Data" cdkDrag>
+          <div style="width: 45%; padding-left: 15px">
+            ​ <img [src]="item.imgUrl" />​
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
   <div *cdkVirtualFor="let item of data; let i = index" class="example-item">
@@ -17,7 +80,7 @@
 
 <!-- <div class="example-container">
   <h2>To do</h2> -->
-<div cdkDropListGroup>
+<!-- <div cdkDropListGroup>
   <div class="example-container">
     <h2>To do</h2>
 
@@ -55,7 +118,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- <div *ngFor="let p of data">
   ​
   <div style="width: 45%; padding-left: 15px">
@@ -63,10 +126,3 @@
   </div>
   ​
 </div> -->
-<div *ngFor="let p of bottom_Data">
-  ​
-  <div style="width: 45%; padding-left: 15px">
-    ​ <img [src]="p.imgUrl" />​
-  </div>
-  ​
-</div>

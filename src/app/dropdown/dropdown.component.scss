@@ -29,6 +29,18 @@ img {
   display: block;
 }
 
+.example-list1 {
+  width: 1000px;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
 .example-box {
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;
@@ -66,4 +78,38 @@ img {
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+#drpdwnField {
+  width: 200px;
+  height: 20%;
+
+}
+#leftCol {
+  width: 200px;
+  height: 80%;
+
+}
+
+.floatleft
+		{
+			float: left;
+			// width: 100px;
+			// height: 100px;
+			// background-color: #F63;
+			// border: 1px solid #F30;
+		}
+
+//  #drpdwnField, #leftCol { clear: left; }
+
+
+ .containingbox {
+  width: 240px;
+  height: 100%;
+  // border: 1px solid #9a969699;
+}
+div {
+  clear: left;
+}
+
+
 
