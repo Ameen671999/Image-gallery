@@ -9,20 +9,19 @@ import { FormsModule } from '@angular/forms';
 // } from "ng-lazyload-image";
 
 import { AppComponent } from './app.component';
-import { GalleryComponent } from './gallery/gallery.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatSelectModule} from '@angular/material/select';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    GalleryComponent,
-    SidenavComponent,
     DropdownComponent
   ],
   imports: [
@@ -36,7 +35,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatSelectModule,
     MatGridListModule,
     ScrollingModule,
-    DragDropModule
+    DragDropModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="title-center">
   <mat-toolbar-row>
     <span>Carousel</span>
   </mat-toolbar-row>
@@ -41,12 +41,26 @@
       </div>
     </div>
   </mat-grid-tile>
-  <mat-grid-tile colspan="3" rowspan="5">
-    <div *ngFor="let p of bottom_Data">
+  <mat-grid-tile colspan="3" rowspan="5"  #content class="mat-grid-tile-content1">
+    <!-- <div *ngFor="let p of bottom_Data">
       <div style="width: 45%; padding-left: 15px">
         ​ <img [src]="p.imgUrl" />​
       </div>
+    </div> -->
+    <div style="display:block!important">
+      <ngb-carousel *ngIf="bottom_Data">
+        <ng-template ngbSlide *ngFor="let d of bottom_Data">
+          <div class="wrapper" >
+            <img [src]="d.imgUrl" alt="Random first slide" style="height: 100%;width:100%;"/>
+          </div>
+          <div class="carousel-caption">
+             <!-- <h3>{{ d.imgName }}</h3>
+            <p>{{ d.imageDescription }}</p> -->
+          </div>
+        </ng-template>
+      </ngb-carousel>
     </div>
+    <!-- <img src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjI2ODJ8MHwxfHNlYXJjaHwxMXx8Y2FyfGVufDB8fHx8MTYzMjY1MTc4Mw&ixlib=rb-1.2.1&q=80&w=1080" alt="" srcset=""> -->
   </mat-grid-tile>
   <mat-grid-tile colspan="3" rowspan="2">
     <div>
@@ -126,3 +140,8 @@
   </div>
   ​
 </div> -->
+
+
+
+
+
