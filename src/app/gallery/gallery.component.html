@@ -1,0 +1,15 @@
+<div class="container">
+  <div
+    class="row justify-content-around align-items-center"
+    Style="height: 80vh; width:100%"
+  >
+    <div class="col-lg-3 col-md-6 col-sm-12 border">
+      <div
+      class="col-lg-3 col-md-6 col-sm-12 border m-3"
+      style="height:40vh"
+      *ngFor="let item of Items"
+    >
+      <img src="{{ item.urls.small }}" alt="" />
+    </div>
+  </div>
+</div>

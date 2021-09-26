@@ -1,0 +1,72 @@
+<mat-form-field appearance="fill">
+  <mat-label>Select an option</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option>None</mat-option>
+    <mat-option value="car" (click)="searchImage()">Car</mat-option>
+    <mat-option value="london" (click)="searchImage()">London</mat-option>
+    <mat-option value="paris" (click)="searchImage()">Paris</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div *cdkVirtualFor="let item of data; let i = index" class="example-item">
+    {{ selected }} - {{ i + 1 }}
+    <hr />
+  </div>
+</cdk-virtual-scroll-viewport> -->
+
+<!-- <div class="example-container">
+  <h2>To do</h2> -->
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>To do</h2>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="left_Data"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of left_Data;" cdkDrag>
+        {{ item.imgName }}
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="bottom_Data"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div
+        class="example-box"
+        *ngFor="let item of bottom_Data; let i = index"
+        cdkDrag
+      >
+        {{ item.imgName }}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div *ngFor="let p of data">
+  ​
+  <div style="width: 45%; padding-left: 15px">
+    ​ <img [src]="p.urls.regular" />​
+  </div>
+  ​
+</div> -->
+<div *ngFor="let p of bottom_Data">
+  ​
+  <div style="width: 45%; padding-left: 15px">
+    ​ <img [src]="p.imgUrl" />​
+  </div>
+  ​
+</div>
