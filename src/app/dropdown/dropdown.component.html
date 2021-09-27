@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="title-center">
-  <mat-toolbar-row>
+  <mat-toolbar-row style="text-align: center">
     <span>Carousel</span>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -9,15 +9,37 @@
     <div class="containingbox">
       <div class="floatleft"></div>
       <div>
-        <mat-form-field appearance="fill" style="margin-left: 10px">
+        <mat-form-field
+          appearance="fill"
+          style="margin-left: 10px; margin-top: 20px"
+        >
           <mat-label>Select an option</mat-label>
           <mat-select [(value)]="selected">
-            <mat-option>None</mat-option>
-            <mat-option value="car" (click)="searchImage()">Car</mat-option>
-            <mat-option value="london" (click)="searchImage()"
-              >London</mat-option
+            <mat-option value="Nature" (click)="searchImage()"
+              >Nature</mat-option
             >
-            <mat-option value="paris" (click)="searchImage()">Paris</mat-option>
+            <mat-option value="Landscapes" (click)="searchImage()"
+              >Landscapes</mat-option
+            >
+            <mat-option value="Liquid Macro Abstracts" (click)="searchImage()"
+              >Liquid Macro Abstracts</mat-option
+            >
+            <mat-option value="Arts & Culture" (click)="searchImage()"
+              >Arts & Culture</mat-option
+            >
+            <mat-option value="Architecture" (click)="searchImage()"
+              >Architecture</mat-option
+            >
+            <mat-option value="Interiors" (click)="searchImage()"
+              >Interiors</mat-option
+            >
+            <mat-option value="Textures & Patterns" (click)="searchImage()"
+              >Textures & Patterns</mat-option
+            >
+            <mat-option value="History" (click)="searchImage()"
+              >History</mat-option
+            >
+            <mat-option value="Car" (click)="searchImage()">Car</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -41,31 +63,29 @@
       </div>
     </div>
   </mat-grid-tile>
-  <mat-grid-tile colspan="3" rowspan="5"  #content class="mat-grid-tile-content1">
-    <!-- <div *ngFor="let p of bottom_Data">
-      <div style="width: 45%; padding-left: 15px">
-        ​ <img [src]="p.imgUrl" />​
-      </div>
-    </div> -->
-    <div style="display:block!important">
+  <mat-grid-tile
+    colspan="3"
+    rowspan="5"
+    #content
+    class="mat-grid-tile-content1"
+  >
+    <div style="display: block !important">
       <ngb-carousel *ngIf="bottom_Data">
         <ng-template ngbSlide *ngFor="let d of bottom_Data">
-          <div class="wrapper" >
-            <img [src]="d.imgUrl" alt="Random first slide" style="height: 100%;width:100%;"/>
+          <div class="wrapper">
+            <img
+              [src]="d.imgUrl"
+              alt="Random first slide"
+              style="height: 85%; width: 100%; padding-right: 20px"
+            />
           </div>
-          <div class="carousel-caption">
-             <!-- <h3>{{ d.imgName }}</h3>
-            <p>{{ d.imageDescription }}</p> -->
-          </div>
+          <div class="carousel-caption"></div>
         </ng-template>
       </ngb-carousel>
     </div>
-    <!-- <img src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjI2ODJ8MHwxfHNlYXJjaHwxMXx8Y2FyfGVufDB8fHx8MTYzMjY1MTc4Mw&ixlib=rb-1.2.1&q=80&w=1080" alt="" srcset=""> -->
   </mat-grid-tile>
-  <mat-grid-tile colspan="3" rowspan="2">
+  <mat-grid-tile colspan="3" rowspan="2" style="margin-left: -8px">
     <div>
-      <h2>Done</h2>
-
       <div
         cdkDropList
         #doneList="cdkDropList"
@@ -75,73 +95,18 @@
         class="example-list1"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="example-box" *ngFor="let item of bottom_Data" cdkDrag>
+        <div
+          class="example-box"
+          [cdkDragDisabled]="bottom_Data.length == 1"
+          *ngFor="let item of bottom_Data"
+          cdkDrag
+        >
           <div style="width: 45%; padding-left: 15px">
-            ​ <img [src]="item.imgUrl" />​
+            ​ <img [src]="item.imgUrl" />
+            <p style="width: 150px; font-size: 12px">{{ item.imgName }}</p>
           </div>
         </div>
       </div>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
-
-<!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div *cdkVirtualFor="let item of data; let i = index" class="example-item">
-    {{ selected }} - {{ i + 1 }}
-    <hr />
-  </div>
-</cdk-virtual-scroll-viewport> -->
-
-<!-- <div class="example-container">
-  <h2>To do</h2> -->
-<!-- <div cdkDropListGroup>
-  <div class="example-container">
-    <h2>To do</h2>
-
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="left_Data"
-      [cdkDropListConnectedTo]="[doneList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div class="example-box" *ngFor="let item of left_Data;" cdkDrag>
-        {{ item.imgName }}
-      </div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>Done</h2>
-
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="bottom_Data"
-      [cdkDropListConnectedTo]="[todoList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div
-        class="example-box"
-        *ngFor="let item of bottom_Data; let i = index"
-        cdkDrag
-      >
-        {{ item.imgName }}
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- <div *ngFor="let p of data">
-  ​
-  <div style="width: 45%; padding-left: 15px">
-    ​ <img [src]="p.urls.regular" />​
-  </div>
-  ​
-</div> -->
-
-
-
-
-

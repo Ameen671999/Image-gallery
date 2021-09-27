@@ -3,10 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-// import {
-//   LazyLoadImageModule,
-//   IntersectionObserverHooks
-// } from "ng-lazyload-image";
 
 import { AppComponent } from './app.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
