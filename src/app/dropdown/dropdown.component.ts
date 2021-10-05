@@ -20,16 +20,17 @@ import {
   styleUrls: ['./dropdown.component.scss'],
 })
 export class DropdownComponent implements AfterViewInit, OnInit {
-  selected = '';
+  selected: any;
   title = 'Carousel';
   public searchKeyword = '';
-
+  public noOfImg = 1;
   public data: any = [];
   public left_Data: any = [];
   public bottom_Data: any = [];
+  public category_Data: any = [];
 
-  public url = `https://api.unsplash.com/search/photos?client_id=${environment.client_id}&page=1&per_page=18&query=`;
-
+  public url = `https://api.unsplash.com/search/photos?client_id=${environment.client_id}&page=1&per_page=`;
+  public category_url = 'https://novolytics-carousel-api.herokuapp.com/api/categories'
   constructor(
     private http: HttpClient,
     private el: ElementRef,
@@ -38,7 +39,12 @@ export class DropdownComponent implements AfterViewInit, OnInit {
 
   @ViewChild('content', { static: true }) divContent: ElementRef | undefined;
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.http.get(this.category_url).subscribe((res: any) => {
+      console.log(res.categorys)
+      this.category_Data = res.categorys
+    })
+  }
   ngAfterViewInit() {
     console.log(document.getElementsByClassName('mat-grid-tile-content')[1]);
     this.renderer.removeClass(
@@ -47,8 +53,11 @@ export class DropdownComponent implements AfterViewInit, OnInit {
     );
   }
   searchImage() {
-    this.searchKeyword = this.selected;
-    this.http.get(this.url + this.searchKeyword).subscribe((res: any) => {
+    console.log(this.selected)
+    this.searchKeyword = this.selected.categoryName;
+    this.noOfImg = this.selected.numberOfImages;
+    console.log(this.searchKeyword)
+    this.http.get(this.url + (this.noOfImg).toString() + '&query=' + this.searchKeyword).subscribe((res: any) => {
       this.left_Data = [];
       this.bottom_Data = [];
       this.data = res['results'];

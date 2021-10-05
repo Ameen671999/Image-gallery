@@ -23,31 +23,12 @@
         >
           <mat-label>Select an option</mat-label>
           <mat-select [(value)]="selected">
-            <mat-option value="Nature" (click)="searchImage()"
-              >Nature</mat-option
+            <mat-option
+              *ngFor="let category of category_Data"
+              [value]="category"
+              (click)="searchImage()"
+              >{{ category.categoryName }}</mat-option
             >
-            <mat-option value="Landscapes" (click)="searchImage()"
-              >Landscapes</mat-option
-            >
-            <mat-option value="Phones" (click)="searchImage()"
-              >Phones</mat-option
-            >
-            <mat-option value="People" (click)="searchImage()"
-              >People</mat-option
-            >
-            <mat-option value="Beach" (click)="searchImage()"
-              >Beach</mat-option
-            >
-            <mat-option value="Interiors" (click)="searchImage()"
-              >Interiors</mat-option
-            >
-            <mat-option value="Architecture" (click)="searchImage()"
-              >Architecture</mat-option
-            >
-            <mat-option value="History" (click)="searchImage()"
-              >History</mat-option
-            >
-            <mat-option value="Car" (click)="searchImage()">Car</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
